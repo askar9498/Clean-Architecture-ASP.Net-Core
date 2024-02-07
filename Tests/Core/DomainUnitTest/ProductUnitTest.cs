@@ -14,7 +14,7 @@ public class ProductUnitTests
     public void GivenConstructorParameters_ProductPropertiesAreInitializedCorrectly()
     {
         // Arrange & Act
-        var product = new Product(
+        Product product = new(
             ExpectedProductName,
             isAvailable: true,
             ExpectedManufactureEmail,
