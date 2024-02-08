@@ -1,7 +1,5 @@
 ﻿using Domain;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 
 namespace Infrastructure.Data;
 
@@ -15,12 +13,43 @@ public class MyDbContext : DbContext
     {
         modelBuilder.Entity<Product>(entity =>
         {
+            // Primary Key
             entity.HasKey(p => p.Id);
-            entity.Property(p => p.Name).HasMaxLength(100).IsRequired();
-            entity.Property(p => p.IsAvailable).IsRequired();
-            entity.Property(p => p.ManufactureEmail).HasMaxLength(255).IsRequired();
-            entity.Property(p => p.ManufacturePhone).HasMaxLength(20).IsRequired();
-            entity.Property(p => p.ProduceDate).IsRequired();
+
+            // Properties
+            entity.Property(p => p.Id)
+                .HasColumnType("int")
+                .IsRequired()
+                .HasComment("The unique identifier for the product.");
+
+            entity.Property(p => p.Name)
+                .HasColumnType("nvarchar")
+                .HasMaxLength(100)
+                .IsRequired()
+                .HasComment("The name of the product.");
+
+            entity.Property(p => p.IsAvailable)
+                .HasColumnType("bit")
+                .IsRequired()
+                .HasComment("Indicates whether the product is available for purchase.");
+
+            entity.Property(p => p.ManufactureEmail)
+                .HasColumnType("varchar")
+                .HasMaxLength(255)
+                .IsRequired()
+                .HasComment("The email of the product manufacturer.");
+
+            entity.Property(p => p.ManufacturePhone)
+                .HasColumnType("varchar")
+                .HasMaxLength(20)
+                .IsRequired()
+                .HasComment("The phone number of the product manufacturer.");
+
+            entity.Property(p => p.ProduceDate)
+                .HasColumnType("datetime2")
+                .IsRequired()
+                .HasComment("The date when the product was produced.");
+
             entity.HasIndex(p => new { p.ManufactureEmail, p.ProduceDate }).IsUnique();
         });
     }
