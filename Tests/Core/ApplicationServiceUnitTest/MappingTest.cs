@@ -1,5 +1,6 @@
-﻿using ApplicationService.Query;
+﻿using ApplicationService;
 using AutoMapper;
+using Contract.Command;
 using Contract.Query;
 using Domain;
 using FluentAssertions;
@@ -31,7 +32,7 @@ public class MappingTest
         });
         Mapper mapper = new(configuration);
 
-        Product product = new("Name", true, "Email", "Phone", DateTime.Now);
+        Product product = new(1, "Name", true, "Email", "Phone", DateTime.Now);
 
         // Act
         ProductDto productDto = mapper.Map<ProductDto>(product);
@@ -43,5 +44,29 @@ public class MappingTest
         productDto.ManufactureEmail.Should().Be(product.ManufactureEmail);
         productDto.ManufacturePhone.Should().Be(product.ManufacturePhone);
         productDto.ProduceDate.Should().Be(product.ProduceDate);
+    }
+
+    [Fact]
+    public void Mapping_CreateProductCommand_To_Product_IsCorrect()
+    {
+        // Arrange
+        MapperConfiguration configuration = new(cfg =>
+        {
+            cfg.AddProfile<MappingProfile>();
+        });
+        Mapper mapper = new(configuration);
+
+        CreateProductCommand createProductCommand = new(1, "Name", true, "Email", "Phone", DateTime.Now);
+
+        // Act
+        Product productDto = mapper.Map<Product>(createProductCommand);
+
+        // Assert
+        productDto.Should().NotBeNull();
+        productDto.Name.Should().Be(createProductCommand.Name);
+        productDto.IsAvailable.Should().Be(createProductCommand.IsAvailable);
+        productDto.ManufactureEmail.Should().Be(createProductCommand.ManufactureEmail);
+        productDto.ManufacturePhone.Should().Be(createProductCommand.ManufacturePhone);
+        productDto.ProduceDate.Should().Be(createProductCommand.ProduceDate);
     }
 }

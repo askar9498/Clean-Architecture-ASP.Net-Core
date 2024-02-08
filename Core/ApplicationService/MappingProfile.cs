@@ -1,13 +1,16 @@
 ﻿using AutoMapper;
+using Contract.Command;
 using Contract.Query;
 using Domain;
 
-namespace ApplicationService.Query;
+namespace ApplicationService;
 
 public class MappingProfile : Profile
 {
     public MappingProfile()
     {
         CreateMap<Product, ProductDto>();
+        CreateMap<CreateProductCommand, Product>()
+            .ForMember(x=>x.Id,opt=>opt.Ignore());
     }
 }

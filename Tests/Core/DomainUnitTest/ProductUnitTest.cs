@@ -5,6 +5,7 @@ namespace DomainUnitTest;
 
 public class ProductUnitTests
 {
+    private static readonly int ExpectedUserId = 1;
     private static readonly string ExpectedProductName = "Name";
     private static readonly string ExpectedManufactureEmail = "Menu";
     private static readonly string ExpectedManufacturePhone = "Phone";
@@ -15,6 +16,7 @@ public class ProductUnitTests
     {
         // Arrange & Act
         Product product = new(
+            ExpectedUserId ,
             ExpectedProductName,
             isAvailable: true,
             ExpectedManufactureEmail,
@@ -28,6 +30,7 @@ public class ProductUnitTests
         product.ManufactureEmail.Should().Be(ExpectedManufactureEmail);
         product.ManufacturePhone.Should().Be(ExpectedManufacturePhone);
         product.ProduceDate.Should().Be(ExpectedProduceDate);
+        product.UserId.Should().Be(ExpectedUserId);
     }
 }
 

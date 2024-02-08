@@ -22,12 +22,13 @@ public class Product
     [StringLength(100)]
     public string Name { get; private set; }
 
-    public Product(string name, bool isAvailable, string manufactureEmail, string manufacturePhone, DateTime produceDate)
+    public Product(int userId ,string name, bool isAvailable, string manufactureEmail, string manufacturePhone, DateTime produceDate)
     {
         Name = name;
         IsAvailable = isAvailable;
         ManufactureEmail = manufactureEmail;
         ManufacturePhone = manufacturePhone;
         ProduceDate = produceDate;
+        UserId = userId;
     }
 }

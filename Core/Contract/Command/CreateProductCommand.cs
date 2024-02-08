@@ -2,7 +2,7 @@
 
 namespace Contract.Command;
 
-public record CreateProductCommand(string Name, bool IsAvailable, string ManufactureEmail, string ManufacturePhone,
+public record CreateProductCommand(int UserId,string Name, bool IsAvailable, string ManufactureEmail, string ManufacturePhone,
     DateTime ProduceDate);
 
 public class CreateProductCommandValidator : AbstractValidator<CreateProductCommand>
