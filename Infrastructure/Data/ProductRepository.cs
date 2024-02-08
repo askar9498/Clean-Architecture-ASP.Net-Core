@@ -14,4 +14,9 @@ public class ProductRepository : IProductRepository
     {
         throw new NotImplementedException();
     }
+
+    public Task<IReadOnlyCollection<Product>> GetByUserIdAsync(int requestUserId)
+    {
+        throw new NotImplementedException();
+    }
 }
