@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Contract.Query.GetAllProduct;
+using Contract.Query;
 using Domain;
 
 namespace ApplicationService.Query.GetAllProduct;

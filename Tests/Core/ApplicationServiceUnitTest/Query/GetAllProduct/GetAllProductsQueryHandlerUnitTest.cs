@@ -1,7 +1,7 @@
 ﻿using ApplicationService;
 using ApplicationService.Query.GetAllProduct;
 using AutoMapper;
-using Contract.Query.GetAllProduct;
+using Contract.Query;
 using Domain;
 using Moq;
 
