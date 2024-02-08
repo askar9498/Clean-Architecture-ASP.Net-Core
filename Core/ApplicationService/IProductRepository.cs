@@ -1,8 +1,9 @@
 ﻿using Domain;
 
-namespace ApplicationService.Command.CreateProduct;
+namespace ApplicationService;
 
 public interface IProductRepository
 {
     Task<int> AddAsync(Product product);
+    Task<IReadOnlyCollection<Product>> GetAllAsync();
 }

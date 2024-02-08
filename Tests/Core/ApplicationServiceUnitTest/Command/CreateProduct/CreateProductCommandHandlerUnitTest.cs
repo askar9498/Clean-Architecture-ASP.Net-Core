@@ -1,4 +1,5 @@
-﻿using ApplicationService.Command.CreateProduct;
+﻿using ApplicationService;
+using ApplicationService.Command.CreateProduct;
 using Contract.Command;
 using Domain;
 using FluentAssertions;
