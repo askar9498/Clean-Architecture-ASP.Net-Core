@@ -1,37 +1,53 @@
 ﻿using ApplicationService;
 using Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data;
 
 public class ProductRepository : IProductRepository
 {
-    public Task<int> AddAsync(Product product)
+    private readonly MyDbContext _dbContext;
+
+    public ProductRepository(MyDbContext dbContext)
     {
-        throw new NotImplementedException();
+        _dbContext = dbContext;
     }
 
-    public Task<IReadOnlyCollection<Product>> GetAllAsync()
+    public async Task<int> AddAsync(Product product)
     {
-        throw new NotImplementedException();
+        _dbContext.Products.Add(product);
+        await _dbContext.SaveChangesAsync();
+        return product.Id;
     }
 
-    public Task<IReadOnlyCollection<Product>> GetByUserIdAsync(int requestUserId)
+    public async Task<IReadOnlyCollection<Product>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        return await _dbContext.Products.ToListAsync();
     }
 
-    public Task<Product?> GetByIdAsync(int requestProductId)
+    public async Task<IReadOnlyCollection<Product>> GetByUserIdAsync(int userId)
     {
-        throw new NotImplementedException();
+        return await _dbContext.Products.Where(p => p.UserId == userId).ToListAsync();
     }
 
-    public Task DeleteAsync(int requestProductId)
+    public async Task<Product?> GetByIdAsync(int productId)
     {
-        throw new NotImplementedException();
+        return await _dbContext.Products.FirstOrDefaultAsync(p => p.Id == productId);
     }
 
-    public Task UpdateAsync(Product existProduct)
+    public async Task DeleteAsync(int productId)
     {
-        throw new NotImplementedException();
+        Product? product = await _dbContext.Products.FindAsync(productId);
+        if (product != null)
+        {
+            _dbContext.Products.Remove(product);
+            await _dbContext.SaveChangesAsync();
+        }
+    }
+
+    public async Task UpdateAsync(Product existingProduct)
+    {
+        _dbContext.Entry(existingProduct).State = EntityState.Modified;
+        await _dbContext.SaveChangesAsync();
     }
 }
