@@ -12,5 +12,7 @@ public class MappingProfile : Profile
         CreateMap<Product, ProductDto>();
         CreateMap<CreateProductCommand, Product>()
             .ForMember(x=>x.Id,opt=>opt.Ignore());
+        CreateMap<UpdateProductCommand, Product>()
+            .ForMember(x=>x.Id,opt=>opt.Ignore());
     }
 }

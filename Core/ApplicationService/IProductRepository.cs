@@ -9,4 +9,5 @@ public interface IProductRepository
     Task<IReadOnlyCollection<Product>> GetByUserIdAsync(int requestUserId);
     Task<Product?> GetByIdAsync(int requestProductId);
     Task DeleteAsync(int requestProductId);
+    Task UpdateAsync(Product existProduct);
 }

@@ -69,4 +69,28 @@ public class MappingTest
         productDto.ManufacturePhone.Should().Be(createProductCommand.ManufacturePhone);
         productDto.ProduceDate.Should().Be(createProductCommand.ProduceDate);
     }
+
+    [Fact]
+    public void Mapping_UpdateProductCommand_To_Product_IsCorrect()
+    {
+        // Arrange
+        MapperConfiguration configuration = new(cfg =>
+        {
+            cfg.AddProfile<MappingProfile>();
+        });
+        Mapper mapper = new(configuration);
+
+        UpdateProductCommand createProductCommand = new(1, 2, "Name", true, "Email", "Phone", DateTime.Now);
+
+        // Act
+        Product productDto = mapper.Map<Product>(createProductCommand);
+
+        // Assert
+        productDto.Should().NotBeNull();
+        productDto.Name.Should().Be(createProductCommand.Name);
+        productDto.IsAvailable.Should().Be(createProductCommand.IsAvailable);
+        productDto.ManufactureEmail.Should().Be(createProductCommand.ManufactureEmail);
+        productDto.ManufacturePhone.Should().Be(createProductCommand.ManufacturePhone);
+        productDto.ProduceDate.Should().Be(createProductCommand.ProduceDate);
+    }
 }

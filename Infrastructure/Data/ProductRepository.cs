@@ -29,4 +29,9 @@ public class ProductRepository : IProductRepository
     {
         throw new NotImplementedException();
     }
+
+    public Task UpdateAsync(Product existProduct)
+    {
+        throw new NotImplementedException();
+    }
 }

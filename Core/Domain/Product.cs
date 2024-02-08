@@ -31,4 +31,13 @@ public class Product
         ProduceDate = produceDate;
         UserId = userId;
     }
+
+    public void Update(Product newProduct)
+    {
+        Name = newProduct.Name;
+        IsAvailable = newProduct.IsAvailable;
+        ManufactureEmail = newProduct.ManufactureEmail;
+        ManufacturePhone = newProduct.ManufacturePhone;
+        ProduceDate = newProduct.ProduceDate;
+    }
 }
