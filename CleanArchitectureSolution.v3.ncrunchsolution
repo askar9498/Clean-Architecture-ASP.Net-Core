@@ -3,6 +3,7 @@
     <AllowParallelTestExecution>True</AllowParallelTestExecution>
     <MetricsExclusionList>
       <Value>Infrastructure\Infrastructure.csproj</Value>
+      <Value>Tests\Core\ApplicationServiceUnitTest\ApplicationServiceUnitTest.csproj</Value>
     </MetricsExclusionList>
     <SolutionConfigured>True</SolutionConfigured>
   </Settings>
