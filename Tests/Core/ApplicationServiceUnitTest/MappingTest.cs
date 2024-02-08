@@ -32,7 +32,7 @@ public class MappingTest
         });
         Mapper mapper = new(configuration);
 
-        Product product = new(1, "Name", true, "Email", "Phone", DateTime.Now);
+        Product product = new(1, "Name", true, "Email@test.com", "+989179979498", DateTime.Now);
 
         // Act
         ProductDto productDto = mapper.Map<ProductDto>(product);
@@ -56,7 +56,7 @@ public class MappingTest
         });
         Mapper mapper = new(configuration);
 
-        CreateProductCommand createProductCommand = new(1, "Name", true, "Email", "Phone", DateTime.Now);
+        CreateProductCommand createProductCommand = new(1, "Name", true, "Email@test.com", "+989179979498", DateTime.Now);
 
         // Act
         Product productDto = mapper.Map<Product>(createProductCommand);
@@ -80,7 +80,7 @@ public class MappingTest
         });
         Mapper mapper = new(configuration);
 
-        UpdateProductCommand createProductCommand = new(1, 2, "Name", true, "Email", "Phone", DateTime.Now);
+        UpdateProductCommand createProductCommand = new(1, 2, "Name", true, "Email@test.com", "+989179979498", DateTime.Now);
 
         // Act
         Product productDto = mapper.Map<Product>(createProductCommand);

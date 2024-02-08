@@ -15,8 +15,8 @@ public class GetAllProductsQueryHandlerUnitTest
         // Arrange
         List<Product> products = new()
         {
-            new Product(1, "Name",true,"Email","Phone",DateTime.Now),
-            new Product(1,"Name2",true,"Email2","Phone2",DateTime.Now)
+            new Product(1, "Name",true,"Email@test.com","+989179979498",DateTime.Now),
+            new Product(1,"Name2",true,"Email2@test.com","+989179979498",DateTime.Now)
         };
 
         Mock<IProductRepository> productRepositoryMock = new();

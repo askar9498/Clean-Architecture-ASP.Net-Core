@@ -16,8 +16,8 @@ public class GetProductsWithUserIdQueryHandlerUnitTest
         int userId = 12;
         List<Product> products = new()
         {
-            new Product(1, "Name",true,"Email","Phone",DateTime.Now),
-            new Product(1,"Name2",false,"Email2","Phone2",DateTime.Now)
+            new Product(1, "Name",true,"Email@test.com","+989179979498",DateTime.Now),
+            new Product(1,"Name2",false,"Email@test.com","+989179979498",DateTime.Now)
         };
 
         Mock<IProductRepository> productRepositoryMock = new();

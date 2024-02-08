@@ -7,8 +7,8 @@ public class ProductUnitTests
 {
     private static readonly int ExpectedUserId = 1;
     private static readonly string ExpectedProductName = "Name";
-    private static readonly string ExpectedManufactureEmail = "Menu";
-    private static readonly string ExpectedManufacturePhone = "Phone";
+    private static readonly string ExpectedManufactureEmail = "Menu@Test.com";
+    private static readonly string ExpectedManufacturePhone = "+989179979498";
     private static readonly DateTime ExpectedProduceDate = DateTime.UtcNow;
 
     [Fact]

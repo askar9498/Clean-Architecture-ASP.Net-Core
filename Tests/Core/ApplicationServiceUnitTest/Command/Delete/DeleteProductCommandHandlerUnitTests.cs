@@ -19,7 +19,7 @@ public class DeleteProductCommandHandlerUnitTests
         Mock<IProductRepository> mockProductRepository = new();
         mockProductRepository
             .Setup(repo => repo.GetByIdAsync(productId))
-            .ReturnsAsync(new Product(userId, "Name", true, "Email", "Phone", DateTime.Now));
+            .ReturnsAsync(new Product(userId, "Name", true, "Email@test.com", "+989179979498", DateTime.Now));
 
         DeleteProductCommandHandler handler = new(mockProductRepository.Object);
         DeleteProductCommand command = new(productId, userId);
@@ -60,7 +60,7 @@ public class DeleteProductCommandHandlerUnitTests
         Mock<IProductRepository> mockProductRepository = new();
         mockProductRepository
             .Setup(repo => repo.GetByIdAsync(productId))
-            .ReturnsAsync(new Product(1, "Name", true, "Email", "Phone", DateTime.Now));
+            .ReturnsAsync(new Product(1, "Name", true, "Email@test.com", "+989179979498", DateTime.Now));
 
         DeleteProductCommandHandler handler = new(mockProductRepository.Object);
         DeleteProductCommand command = new(productId, wrongUserId);
