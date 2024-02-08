@@ -19,4 +19,14 @@ public class ProductRepository : IProductRepository
     {
         throw new NotImplementedException();
     }
+
+    public Task<Product?> GetByIdAsync(int requestProductId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task DeleteAsync(int requestProductId)
+    {
+        throw new NotImplementedException();
+    }
 }
