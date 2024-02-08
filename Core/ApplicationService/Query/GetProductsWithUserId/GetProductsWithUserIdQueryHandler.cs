@@ -17,6 +17,7 @@ public class GetProductsWithUserIdQueryHandler : IGetProductsWithUserIdQueryHand
     public async Task<IReadOnlyCollection<ProductDto>> Handle(GetProductsWithUserIdQuery request, CancellationToken cancellationToken)
     {
         IReadOnlyCollection<Product> products = await _productRepository.GetByUserIdAsync(request.UserId);
+
         List<ProductDto> productDtos = products.Select(MapToDto).ToList();
 
         return productDtos;
