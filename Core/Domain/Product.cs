@@ -6,6 +6,8 @@ public class Product
 {
     public int Id { get; private set; } = 0;
 
+    public int UserId { get; private set; } = 0;
+
     public bool IsAvailable { get; private set; }
 
     [EmailAddress]
